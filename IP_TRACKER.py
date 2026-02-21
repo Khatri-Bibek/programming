@@ -13,4 +13,10 @@ import tkinter as tk
 from tkinter import messagebox
 import requests
 
+def track_ip():
+    ip = entry.get()
+    if not ip:
+        messagebox.showwarning("Input Error", "Please enter an IP address")
+        return
+
 
