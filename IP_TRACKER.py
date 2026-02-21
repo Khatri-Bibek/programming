@@ -18,5 +18,11 @@ def track_ip():
     if not ip:
         messagebox.showwarning("Input Error", "Please enter an IP address")
         return
-
-
+    url = f"http://ipinfo.io/{ip}/json"
+    try:
+        response = requests.get(url)
+        data = response.json()
+        result = "\n".join(f"{key}: {value}" for key, value in data.items())
+        messagebox.showinfo("IP Information", result)   
+    except Exception as e:
+        messagebox.showerror("Error", f"An error occurred: {e}")
